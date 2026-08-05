@@ -128,11 +128,18 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.15;letter-spacing:-.02
 /* ============================================================
    TRUST BAR
    ============================================================ */
-.trust-bar{background:var(--white);border-bottom:1px solid var(--line);padding:26px 0}
-.trust-inner{display:flex;align-items:center;flex-wrap:wrap;justify-content:center;gap:18px 44px}
-.trust-label{font-family:var(--font-display);font-weight:700;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
-.trust-logo{font-family:var(--font-display);font-weight:800;color:#9aa4b2;font-size:1.02rem;letter-spacing:.02em;opacity:.85;transition:all .3s var(--ease);white-space:nowrap}
-.trust-logo:hover{color:var(--navy);opacity:1}
+.trust-bar{background:linear-gradient(180deg,var(--off-white),var(--cream));border-bottom:1px solid var(--line);padding:34px 0;position:relative;overflow:hidden}
+.trust-bar::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--terracotta),var(--gold),var(--navy))}
+.trust-inner{display:flex;align-items:center;flex-wrap:wrap;justify-content:center;gap:16px}
+.trust-label{font-family:var(--font-display);font-weight:700;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--terracotta);padding-right:10px}
+.trust-badge{font-family:var(--font-display);font-weight:800;font-size:.92rem;letter-spacing:.02em;padding:10px 22px;border-radius:999px;background:#fff;box-shadow:var(--shadow-sm);transition:transform .3s var(--ease),box-shadow .3s var(--ease);position:relative}
+.trust-badge:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.trust-badge::before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:9px;vertical-align:0}
+.trust-badge:nth-child(1){color:#004a8f;border:1px solid #cfe0f2}.trust-badge:nth-child(1)::before{background:#3aa0e3}
+.trust-badge:nth-child(2){color:#b0262f;border:1px solid #eccfd0}.trust-badge:nth-child(2)::before{background:#b0262f}
+.trust-badge:nth-child(3){color:#0a7c5c;border:1px solid #cfe8de}.trust-badge:nth-child(3)::before{background:#19b189}
+.trust-badge:nth-child(4){color:#c0471a;border:1px solid #eed1c0}.trust-badge:nth-child(4)::before{background:#e2692e}
+.trust-badge:nth-child(5){color:#6a5acd;border:1px solid #ddd8f0}.trust-badge:nth-child(5)::before{background:#8b7bd8}
 
 /* ============================================================
    MISSION
@@ -144,7 +151,8 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.15;letter-spacing:-.02
 .mission-media .main-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
 .mission-media:hover .main-img img{transform:scale(1.04)}
 .mission-media::after{content:"";position:absolute;top:-18px;right:-18px;width:150px;height:150px;border:3px solid var(--terracotta);border-radius:var(--radius);z-index:-1;opacity:.35}
-.reg-badge{position:absolute;bottom:-22px;left:26px;background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);border-radius:var(--radius-sm);box-shadow:var(--shadow-md);padding:16px 20px;display:flex;gap:14px;align-items:center;max-width:330px}
+.reg-badge{position:absolute;bottom:-22px;left:26px;background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);border-radius:var(--radius-sm);box-shadow:var(--shadow-md);padding:16px 20px;display:flex;gap:14px;align-items:center;max-width:340px;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.reg-badge:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
 .reg-badge .icon{font-size:1.7rem;line-height:1}
 .reg-badge .txt b{display:block;font-family:var(--font-display);font-size:.95rem;color:var(--navy);margin-bottom:2px}
 .reg-badge .txt span{font-size:.8rem;color:var(--muted)}
@@ -277,6 +285,13 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.15;letter-spacing:-.02
 /* ============================================================
    RESPONSIVE
    ============================================================ */
+/* Touch devices: keep gallery captions visible (no hover) */
+@media (hover:none){
+  .g-item .g-cap{opacity:1}
+  .g-item .g-cap span{font-size:.82rem}
+}
+
+/* ===== TABLET (≤1024px) ===== */
 @media (max-width:1024px){
   .hero-grid{grid-template-columns:1fr;gap:44px}
   .impact-grid{grid-template-columns:repeat(2,1fr)}
@@ -285,28 +300,79 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.15;letter-spacing:-.02
   .gallery-grid{grid-template-columns:repeat(2,1fr)}
   .donate-grid{grid-template-columns:1fr;gap:40px}
 }
+
+/* ===== MOBILE NAV / SMALL TABLET (≤860px) ===== */
 @media (max-width:860px){
-  .nav-links{position:fixed;top:84px;left:0;right:0;background:var(--navy);flex-direction:column;align-items:flex-start;gap:4px;padding:14px 24px 26px;transform:translateY(-140%);transition:transform .38s var(--ease);box-shadow:0 24px 40px -20px rgba(0,0,0,.6);border-bottom:3px solid var(--terracotta)}
+  body{overflow-x:hidden}
+  .nav-inner{height:72px}
+  .brand-logo{width:40px;height:40px}
+  .brand-text .b1{font-size:.84rem}
+  .brand-text .b2{font-size:.56rem}
+  html{scroll-padding-top:72px}
+
+  /* Full-screen overlay menu */
+  .nav-links{position:fixed;top:0;left:0;right:0;bottom:0;z-index:990;background:linear-gradient(180deg,var(--navy),#091b33);flex-direction:column;align-items:stretch;gap:2px;padding:100px 26px 48px;transform:translateY(-102%);transition:transform .42s var(--ease);overflow-y:auto;-webkit-overflow-scrolling:touch}
   .nav-links.open{transform:translateY(0)}
-  .nav-links a{width:100%;padding:13px 6px;font-size:1.05rem;border-bottom:1px solid rgba(255,255,255,.07)}
+  .nav-links a{width:100%;padding:18px 8px;font-size:1.22rem;font-weight:700;border-bottom:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.9)}
+  .nav-links a:last-child{border-bottom:none}
   .nav-links a::after{display:none}
   .nav-cta .btn-donate{display:none}
   .hamburger{display:flex}
-  .mission-grid{grid-template-columns:1fr;gap:48px}
-  .section{padding:76px 0}
+
+  .mission-grid{grid-template-columns:1fr;gap:52px}
+  .section{padding:64px 0}
+  .section-head{margin-bottom:40px}
   .footer-grid{grid-template-columns:1fr;gap:36px}
+
+  /* Floating donate bar (mobile) */
+  .floating-donate{display:block}
 }
+
+/* ===== PHONE (≤560px) ===== */
 @media (max-width:560px){
-  .stat-row{grid-template-columns:1fr;gap:14px}
+  .section{padding:56px 0}
+  .section-head h2{font-size:1.7rem}
+  .container{padding:0 18px}
+  .hero{padding:150px 0 84px}
+  .hero h1{font-size:2.15rem;line-height:1.12}
+  .hero-sub{font-size:1rem}
+  .hero-actions .btn{width:100%;padding:15px 24px}
+  .hero-tag{font-size:.7rem;padding:8px 14px}
+  .stat-box{padding:26px 20px}
+  .stat-row{grid-template-columns:1fr;gap:12px}
   .stat + .stat{border-left:none;border-top:1px solid rgba(255,255,255,.12);padding-top:12px}
-  .impact-grid{grid-template-columns:1fr}
-  .gallery-grid{grid-template-columns:1fr;grid-auto-rows:220px}
-  .reg-badge{left:12px;right:12px;bottom:-34px}
-  .hero{padding:170px 0 100px}
-  .hero-actions .btn{width:100%}
-  .pay-card{flex-direction:column}
-  .team-grid{grid-template-columns:1fr}
+  .trust-inner{gap:12px}
+  .trust-badge{font-size:.8rem;padding:8px 16px}
+  .impact-grid{grid-template-columns:1fr;gap:16px}
+  .impact-card{padding:30px 22px}
+  .gallery-grid{grid-template-columns:1fr;grid-auto-rows:230px;gap:14px}
+  .reg-badge{left:10px;right:10px;bottom:-40px;padding:14px 16px}
+  .mission-media .main-img{aspect-ratio:1/1}
+  .program-body{padding:24px 20px}
+  .team-card{padding:38px 24px}
+  .tst-card{padding:30px 22px}
+  .pay-card{flex-direction:column;padding:22px}
+  .pay-ico{width:50px;height:50px;font-size:1.4rem}
+  .donate-intro .secure-badge{margin-top:22px;font-size:.76rem}
+  .footer{padding-top:54px}
+  .footer-bottom{flex-direction:column;text-align:center;justify-content:center}
 }
+
+/* ===== SMALL PHONES (≤380px) ===== */
+@media (max-width:380px){
+  .hero h1{font-size:1.9rem}
+  .brand-text .b1{font-size:.76rem}
+  .brand-logo{width:36px;height:36px}
+  .stat-box .num{font-size:1.5rem}
+}
+
+/* ===== Floating Donate bar ===== */
+.floating-donate{display:none;position:fixed;left:0;right:0;bottom:0;z-index:920;background:rgba(11,31,58,.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:12px 16px calc(12px + env(safe-area-inset-bottom));border-top:1px solid rgba(255,255,255,.14);box-shadow:0 -12px 32px -14px rgba(0,0,0,.5);transform:translateY(110%);transition:transform .4s var(--ease)}
+.floating-donate.visible{transform:translateY(0)}
+.fd-inner{display:flex;align-items:center;justify-content:space-between;gap:14px;max-width:var(--maxw);margin:0 auto}
+.fd-text{font-family:var(--font-display);font-weight:700;color:#fff;font-size:.9rem;line-height:1.25}
+.fd-text small{display:block;font-family:var(--font-body);font-weight:400;color:rgba(255,255,255,.6);font-size:.72rem}
+.floating-donate .btn{padding:12px 24px;font-size:.9rem;flex-shrink:0}
 </style>
 </head>
 
@@ -393,11 +459,11 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.15;letter-spacing:-.02
 <section class="trust-bar" aria-label="Partner organizations">
   <div class="container trust-inner">
     <span class="trust-label">Trusted &amp; partnering with</span>
-    <span class="trust-logo">UN&nbsp;OCHA</span>
-    <span class="trust-logo">ICRC</span>
-    <span class="trust-logo">Save&nbsp;the&nbsp;Children</span>
-    <span class="trust-logo">World&nbsp;Vision</span>
-    <span class="trust-logo">CARE&nbsp;International</span>
+    <span class="trust-badge">UN&nbsp;OCHA</span>
+    <span class="trust-badge">ICRC</span>
+    <span class="trust-badge">Save&nbsp;the&nbsp;Children</span>
+    <span class="trust-badge">World&nbsp;Vision</span>
+    <span class="trust-badge">CARE&nbsp;International</span>
   </div>
 </section>
 
@@ -429,13 +495,13 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.15;letter-spacing:-.02
     <div class="mission-media reveal">
       <!-- INSERT CHURCH EXTERIOR PHOTO HERE: photo of the church building exterior -->
       <div class="main-img"><img src="church-exterior-1.png.jpeg" alt="Smyrna Gospel Church building exterior" /></div>
-      <div class="reg-badge">
+      <a class="reg-badge" href="sindh-trust-rules-2020.jpeg" target="_blank" rel="noopener" title="Open our registration document (Sindh Trust Rules, 2020)">
         <span class="icon">📜</span>
         <div class="txt">
           <b>Registered Charity</b>
-          <span>Schedule-I, MoA — Sindh Trust Rules, 2020</span>
+          <span>Schedule-I, MoA — Sindh Trust Rules, 2020 <em style="font-style:normal;color:var(--terracotta);font-weight:700">View →</em></span>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </section>
@@ -729,6 +795,14 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.15;letter-spacing:-.02
 
 </main>
 
+<!-- Floating mobile donate bar -->
+<div class="floating-donate" id="floatingDonate" aria-hidden="true">
+  <div class="fd-inner">
+    <div class="fd-text">Make a difference today<small>Relief for food, medical, shelter &amp; education</small></div>
+    <a href="#donate" class="btn btn-primary">Donate</a>
+  </div>
+</div>
+
 <!-- ============================================================
      11. FOOTER
      ============================================================ -->
@@ -776,9 +850,10 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.15;letter-spacing:-.02
     <div class="footer-bottom">
       <span>© <span id="year"></span> Smyrna Gospel Church of Pakistan Trust. All rights reserved.</span>
       <div class="legal">
-        <a href="#">Contact</a>
+        <a href="#contact">Contact</a>
         <a href="#">Press</a>
         <a href="#">Financials</a>
+        <a href="sindh-trust-rules-2020.jpeg" target="_blank" rel="noopener">Registration 2020</a>
         <a href="#">Privacy</a>
       </div>
     </div>
@@ -792,25 +867,39 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.15;letter-spacing:-.02
 const navbar = document.getElementById('navbar');
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('navLinks');
+const floatingDonate = document.getElementById('floatingDonate');
 
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 10);
-});
-
-hamburger.addEventListener('click', () => {
-  const open = navLinks.classList.toggle('open');
+function setMenu(open){
+  navLinks.classList.toggle('open', open);
   hamburger.classList.toggle('open', open);
   hamburger.setAttribute('aria-expanded', open);
   document.body.style.overflow = open ? 'hidden' : '';
+}
+
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 10);
+  if (window.innerWidth <= 860 && window.scrollY > 480) {
+    floatingDonate.classList.add('visible');
+    floatingDonate.setAttribute('aria-hidden', 'false');
+  } else {
+    floatingDonate.classList.remove('visible');
+    floatingDonate.setAttribute('aria-hidden', 'true');
+  }
+});
+
+hamburger.addEventListener('click', () => {
+  setMenu(!navLinks.classList.contains('open'));
+});
+hamburger.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && navLinks.classList.contains('open')) setMenu(false);
 });
 
 navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    navLinks.classList.remove('open');
-    hamburger.classList.remove('open');
-    hamburger.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-  });
+  link.addEventListener('click', () => setMenu(false));
+});
+
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 860) setMenu(false);
 });
 
 /* ============================================================
