@@ -141,6 +141,15 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.15;letter-spacing:-.02
 .trust-badge:nth-child(4){color:#c0471a;border:1px solid #eed1c0}.trust-badge:nth-child(4)::before{background:#e2692e}
 .trust-badge:nth-child(5){color:#6a5acd;border:1px solid #ddd8f0}.trust-badge:nth-child(5)::before{background:#8b7bd8}
 
+.doc-frame{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-lg);padding:14px;max-width:860px;margin:0 auto}
+.doc-scroll{max-height:78vh;overflow:auto;border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--cream);text-align:center}
+.doc-img{width:100%;height:auto;display:block}
+.doc-actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;padding:20px 10px 8px}
+@media (max-width:560px){
+  .doc-scroll{max-height:65vh}
+  .doc-actions .btn{width:100%}
+}
+
 /* ============================================================
    MISSION
    ============================================================ */
@@ -394,6 +403,7 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.15;letter-spacing:-.02
 
     <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
       <a href="#mission">Mission</a>
+      <a href="#document">Document</a>
       <a href="#impact">Impact</a>
       <a href="#programs">Programs</a>
       <a href="#gallery">Gallery</a>
@@ -502,6 +512,30 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.15;letter-spacing:-.02
           <span>Schedule-I, MoA — Sindh Trust Rules, 2020 <em style="font-style:normal;color:var(--terracotta);font-weight:700">View →</em></span>
         </div>
       </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     4b. REGISTRATION DOCUMENT (below Mission)
+     ============================================================ -->
+<section class="section document" id="document">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Legal &amp; Governance</span>
+      <h2>Our Registration Document</h2>
+      <p>The Smyrna Gospel Church of Pakistan Trust is registered under Schedule-I, MoA under the Sindh Trust Rules, 2020. View our official registration document below.</p>
+    </div>
+
+    <div class="doc-frame reveal">
+      <div class="doc-scroll">
+        <!-- SINDH TRUST RULES 2020 REGISTRATION DOCUMENT: displays inline on the page -->
+        <img class="doc-img" src="sindh-trust-rules-2020.jpeg" alt="Smyrna Gospel Church of Pakistan Trust registration document under the Sindh Trust Rules, 2020" />
+      </div>
+      <div class="doc-actions">
+        <a href="sindh-trust-rules-2020.jpeg" target="_blank" rel="noopener" class="btn btn-outline-dark">Open Full Document</a>
+        <a href="sindh-trust-rules-2020.jpeg" download class="btn btn-primary">Download PDF</a>
+      </div>
     </div>
   </div>
 </section>
@@ -829,6 +863,7 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.15;letter-spacing:-.02
         <h4>Quick Links</h4>
         <ul class="footer-links">
           <li><a href="#mission">Mission</a></li>
+          <li><a href="#document">Document</a></li>
           <li><a href="#impact">Impact</a></li>
           <li><a href="#programs">Programs</a></li>
           <li><a href="#gallery">Gallery</a></li>
