@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Smyrna Gospel Church of Pakistan Trust — Humanitarian Relief</title>
+<meta name="description" content="Smyrna Gospel Church of Pakistan Trust delivers humanitarian aid — food, medical care, shelter, and education — to the most vulnerable. Registered under Schedule-I, MoA under the Sindh Trust Rules, 2020." />
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+:root{
+  --navy:#0b1f3a;
+  --navy-2:#10294d;
+  --navy-3:#163356;
+  --terracotta:#c8452c;
+  --terracotta-dark:#a83824;
+  --terracotta-light:#e8765c;
+  --off-white:#faf7f2;
+  --white:#ffffff;
+  --cream:#f3ede4;
+  --ink:#1c2431;
+  --muted:#5d6775;
+  --line:#e7e0d6;
+  --gold:#d9a441;
+  --shadow-lg:0 24px 60px -18px rgba(11,31,58,.35);
+  --shadow-md:0 14px 40px -14px rgba(11,31,58,.22);
+  --shadow-sm:0 6px 18px -8px rgba(11,31,58,.16);
+  --radius:18px;
+  --radius-sm:12px;
+  --maxw:1200px;
+  --font-display:'Manrope',sans-serif;
+  --font-body:'Inter',sans-serif;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+
+/* ============================================================
+   BASE / RESET
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{font-family:var(--font-body);color:var(--ink);background:var(--off-white);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+h1,h2,h3,h4{font-family:var(--font-display);line-height:1.15;letter-spacing:-.02em}
+.container{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+.section{padding:100px 0}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:var(--terracotta)}
+.eyebrow::before{content:"";width:34px;height:2px;background:var(--terracotta);border-radius:2px}
+.section-head{max-width:720px;margin-bottom:56px}
+.section-head.center{margin-left:auto;margin-right:auto;text-align:center}
+.section-head.center .eyebrow::after{content:"";width:34px;height:2px;background:var(--terracotta);border-radius:2px}
+.section-head h2{font-size:clamp(1.9rem,4vw,2.9rem);color:var(--navy);margin:16px 0 14px}
+.section-head p{color:var(--muted);font-size:1.05rem}
+.section-head.light h2{color:var(--white)}
+.section-head.light p{color:rgba(255,255,255,.72)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--font-display);font-weight:700;font-size:.98rem;letter-spacing:.01em;padding:16px 30px;border-radius:999px;border:2px solid transparent;cursor:pointer;transition:all .28s var(--ease);white-space:nowrap}
+.btn-primary{background:var(--terracotta);color:#fff}
+.btn-primary:hover{background:var(--terracotta-dark);transform:translateY(-2px);box-shadow:0 14px 30px -10px rgba(200,69,44,.55)}
+.btn-outline{border-color:#fff;color:#fff;background:transparent}
+.btn-outline:hover{background:#fff;color:var(--navy);transform:translateY(-2px)}
+.btn-outline-dark{border-color:var(--navy);color:var(--navy);background:transparent}
+.btn-outline-dark:hover{background:var(--navy);color:#fff;transform:translateY(-2px)}
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(11,31,58,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);transition:box-shadow .3s var(--ease)}
+.navbar.scrolled{box-shadow:0 10px 30px -12px rgba(0,0,0,.5)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:84px;gap:16px}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.brand-logo{width:46px;height:46px;border-radius:10px;overflow:hidden;background:var(--cream);display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid rgba(255,255,255,.14)}
+.brand-logo img{width:100%;height:100%;object-fit:cover}
+.brand-text{line-height:1.1;min-width:0}
+.brand-text .b1{display:block;font-family:var(--font-display);font-weight:800;font-size:.92rem;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand-text .b2{display:block;font-family:var(--font-display);font-weight:600;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
+.nav-links{display:flex;align-items:center;gap:30px}
+.nav-links a{font-family:var(--font-display);font-weight:600;font-size:.92rem;color:rgba(255,255,255,.82);position:relative;padding:6px 0;transition:color .25s var(--ease)}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--terracotta-light);border-radius:2px;transition:width .28s var(--ease)}
+.nav-links a:hover{color:#fff}
+.nav-links a:hover::after{width:100%}
+.nav-cta{display:flex;align-items:center;gap:14px}
+.btn-donate{background:var(--terracotta);color:#fff;padding:11px 24px;border-radius:999px;font-family:var(--font-display);font-weight:700;font-size:.9rem;border:2px solid var(--terracotta);transition:all .28s var(--ease)}
+.btn-donate:hover{background:#fff;color:var(--terracotta);border-color:#fff;transform:translateY(-2px)}
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:6px;width:44px;height:44px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:10px;cursor:pointer;transition:background .25s}
+.hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;margin:0 auto;transition:transform .3s var(--ease),opacity .3s var(--ease)}
+.hamburger.open span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{position:relative;background:var(--navy);color:#fff;padding:190px 0 120px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(900px 500px at 82% 12%,rgba(200,69,44,.22),transparent 60%),radial-gradient(700px 420px at 8% 88%,rgba(217,164,65,.14),transparent 60%)}
+.hero::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px);background-size:30px 30px;opacity:.5}
+.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center}
+.hero-tag{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);padding:9px 18px;border-radius:999px;font-family:var(--font-display);font-weight:600;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:26px}
+.hero h1{font-size:clamp(2.5rem,5.4vw,4rem);margin-bottom:22px}
+.hero h1 .accent{color:var(--terracotta-light)}
+.hero-sub{font-size:1.12rem;color:rgba(255,255,255,.78);max-width:560px;margin-bottom:36px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:44px}
+.hero-note{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.6);font-size:.88rem;margin-top:-20px}
+.hero-note .dot{width:8px;height:8px;border-radius:50%;background:#4ade80;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+
+/* Trust stat box */
+.stat-box{position:relative;z-index:2;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:var(--radius);padding:34px 30px;backdrop-filter:blur(6px)}
+.stat-box .s-label{font-family:var(--font-display);font-weight:700;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:20px}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.stat{text-align:center;padding:6px 4px}
+.stat .num{font-family:var(--font-display);font-weight:800;font-size:clamp(1.6rem,3vw,2.2rem);color:#fff}
+.stat .num span{color:var(--gold)}
+.stat .lbl{font-size:.8rem;color:rgba(255,255,255,.66);margin-top:4px}
+.stat + .stat{border-left:1px solid rgba(255,255,255,.12)}
+.stat-box .s-foot{margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);display:flex;align-items:center;gap:10px;font-size:.85rem;color:rgba(255,255,255,.72)}
+.stat-box .s-foot .shield{font-size:1.1rem}
+
+/* ============================================================
+   TRUST BAR
+   ============================================================ */
+.trust-bar{background:var(--white);border-bottom:1px solid var(--line);padding:26px 0}
+.trust-inner{display:flex;align-items:center;flex-wrap:wrap;justify-content:center;gap:18px 44px}
+.trust-label{font-family:var(--font-display);font-weight:700;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.trust-logo{font-family:var(--font-display);font-weight:800;color:#9aa4b2;font-size:1.02rem;letter-spacing:.02em;opacity:.85;transition:all .3s var(--ease);white-space:nowrap}
+.trust-logo:hover{color:var(--navy);opacity:1}
+
+/* ============================================================
+   MISSION
+   ============================================================ */
+.mission{background:var(--off-white)}
+.mission-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.mission-media{position:relative}
+.mission-media .main-img{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg);aspect-ratio:4/3}
+.mission-media .main-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.mission-media:hover .main-img img{transform:scale(1.04)}
+.mission-media::after{content:"";position:absolute;top:-18px;right:-18px;width:150px;height:150px;border:3px solid var(--terracotta);border-radius:var(--radius);z-index:-1;opacity:.35}
+.reg-badge{position:absolute;bottom:-22px;left:26px;background:#fff;border:1px solid var(--line);border-left:5px solid var(--terracotta);border-radius:var(--radius-sm);box-shadow:var(--shadow-md);padding:16px 20px;display:flex;gap:14px;align-items:center;max-width:330px}
+.reg-badge .icon{font-size:1.7rem;line-height:1}
+.reg-badge .txt b{display:block;font-family:var(--font-display);font-size:.95rem;color:var(--navy);margin-bottom:2px}
+.reg-badge .txt span{font-size:.8rem;color:var(--muted)}
+.mission-copy p{color:var(--muted);margin-bottom:18px;font-size:1.03rem}
+.mission-copy p strong{color:var(--navy)}
+.check-list{display:grid;gap:14px;margin-top:26px}
+.check-list li{display:flex;gap:14px;align-items:flex-start}
+.check-list .ck{width:26px;height:26px;border-radius:50%;background:rgba(200,69,44,.12);color:var(--terracotta);display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:800;flex-shrink:0;margin-top:2px}
+.check-list b{color:var(--navy);font-family:var(--font-display)}
+.check-list span{color:var(--muted);font-size:.95rem;display:block}
+
+/* ============================================================
+   IMPACT
+   ============================================================ */
+.impact{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+.impact::before{content:"";position:absolute;top:-120px;right:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(200,69,44,.28),transparent 70%)}
+.impact-grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+.impact-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:38px 28px;text-align:center;transition:all .35s var(--ease)}
+.impact-card:hover{background:rgba(255,255,255,.1);transform:translateY(-8px);border-color:rgba(217,164,65,.5)}
+.impact-card .ico{width:60px;height:60px;margin:0 auto 20px;border-radius:16px;background:rgba(217,164,65,.14);display:flex;align-items:center;justify-content:center;font-size:1.7rem}
+.impact-card .num{font-family:var(--font-display);font-weight:800;font-size:clamp(2rem,3.4vw,2.7rem);color:#fff}
+.impact-card .num span{color:var(--gold)}
+.impact-card .lbl{font-family:var(--font-display);font-weight:700;font-size:1.02rem;margin-top:6px;color:#fff}
+.impact-card .sub{font-size:.85rem;color:rgba(255,255,255,.66);margin-top:8px}
+
+/* ============================================================
+   PROGRAMS
+   ============================================================ */
+.programs{background:var(--off-white)}
+.programs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.program-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm);transition:all .35s var(--ease);display:flex;flex-direction:column}
+.program-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg);border-color:transparent}
+.program-media{aspect-ratio:16/10;overflow:hidden;position:relative}
+.program-media img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .6s var(--ease)}
+.program-card:hover .program-media img{transform:scale(1.06)}
+.program-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(11,31,58,.55));opacity:.9}
+.program-tag{position:absolute;top:16px;left:16px;z-index:2;background:var(--terracotta);color:#fff;font-family:var(--font-display);font-weight:700;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;padding:6px 12px;border-radius:999px}
+.program-body{padding:28px;display:flex;flex-direction:column;flex:1}
+.program-body h3{font-size:1.35rem;color:var(--navy);margin-bottom:10px}
+.program-body p{color:var(--muted);font-size:.95rem;flex:1}
+.program-link{margin-top:20px;display:inline-flex;align-items:center;gap:8px;font-family:var(--font-display);font-weight:700;color:var(--terracotta);font-size:.92rem;transition:gap .28s var(--ease)}
+.program-link:hover{gap:14px}
+
+/* ============================================================
+   GALLERY
+   ============================================================ */
+.gallery{background:#fff}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:240px;gap:18px}
+.g-item{position:relative;border-radius:var(--radius-sm);overflow:hidden;cursor:pointer}
+.g-item img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .6s var(--ease)}
+.g-item:hover img{transform:scale(1.07)}
+.g-item .g-cap{position:absolute;inset:0;display:flex;align-items:flex-end;padding:20px;background:linear-gradient(180deg,transparent 55%,rgba(11,31,58,.82));opacity:0;transition:opacity .35s var(--ease)}
+.g-item:hover .g-cap{opacity:1}
+.g-item .g-cap span{color:#fff;font-family:var(--font-display);font-weight:700;font-size:.95rem}
+
+/* ============================================================
+   LEADERSHIP
+   ============================================================ */
+.team{background:var(--cream)}
+.team-grid{display:grid;grid-template-columns:repeat(2,minmax(0,420px));gap:40px;justify-content:center}
+.team-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:44px 34px 38px;text-align:center;box-shadow:var(--shadow-sm);transition:all .35s var(--ease)}
+.team-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-md)}
+.avatar{width:132px;height:132px;border-radius:50%;margin:0 auto 22px;border:5px solid var(--cream);outline:1px solid var(--line);overflow:hidden}
+.avatar img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.team-card .role{display:inline-block;background:rgba(200,69,44,.1);color:var(--terracotta);font-family:var(--font-display);font-weight:700;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;padding:6px 14px;border-radius:999px;margin-bottom:12px}
+.team-card h3{font-size:1.45rem;color:var(--navy);margin-bottom:6px}
+.team-card .bio{color:var(--muted);font-size:.93rem;margin-top:14px}
+.team-card .divider{width:44px;height:3px;background:var(--terracotta);border-radius:3px;margin:18px auto}
+
+/* ============================================================
+   TESTIMONIALS
+   ============================================================ */
+.testimonials{background:var(--off-white)}
+.tst-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.tst-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:36px 30px;box-shadow:var(--shadow-sm);transition:all .35s var(--ease);display:flex;flex-direction:column}
+.tst-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md)}
+.tst-card .qmark{font-family:var(--font-display);font-weight:800;font-size:3.4rem;line-height:.6;color:var(--terracotta);margin-bottom:22px;height:22px}
+.tst-card blockquote{font-size:1rem;color:var(--ink);font-style:italic;flex:1;line-height:1.7}
+.tst-card footer{margin-top:24px;padding-top:18px;border-top:1px solid var(--line);display:flex;align-items:center;gap:14px}
+.tst-ava{width:46px;height:46px;border-radius:50%;background:var(--navy-2);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:800;font-size:1rem;flex-shrink:0}
+.tst-card footer b{display:block;font-family:var(--font-display);font-size:.95rem;color:var(--navy)}
+.tst-card footer span{font-size:.8rem;color:var(--muted)}
+
+/* ============================================================
+   DONATION
+   ============================================================ */
+.donate{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+.donate::before{content:"";position:absolute;inset:0;background:radial-gradient(800px 500px at 15% 8%,rgba(200,69,44,.2),transparent 60%),radial-gradient(600px 400px at 90% 100%,rgba(217,164,65,.14),transparent 60%)}
+.donate .container{position:relative;z-index:2}
+.donate-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center}
+.donate-intro .secure-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);padding:10px 18px;border-radius:999px;font-family:var(--font-display);font-weight:700;font-size:.82rem;color:#b9f0c8;margin-top:30px}
+.donate-intro p{color:rgba(255,255,255,.76);font-size:1.05rem;margin-top:16px}
+.donate-points{margin-top:26px;display:grid;gap:12px}
+.donate-points li{display:flex;gap:12px;align-items:center;color:rgba(255,255,255,.85);font-size:.95rem}
+.donate-points .p-ck{width:24px;height:24px;border-radius:50%;background:rgba(74,222,128,.16);color:#4ade80;display:flex;align-items:center;justify-content:center;font-size:.72rem;flex-shrink:0}
+.pay-grid{display:grid;gap:20px}
+.pay-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:var(--radius);padding:26px;display:flex;gap:18px;align-items:flex-start;transition:all .3s var(--ease)}
+.pay-card:hover{background:rgba(255,255,255,.11);transform:translateX(6px);border-color:rgba(217,164,65,.5)}
+.pay-ico{width:56px;height:56px;border-radius:14px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0}
+.pay-card h4{font-size:1.12rem;margin-bottom:4px}
+.pay-card .desc{font-size:.88rem;color:rgba(255,255,255,.68)}
+.pay-card .meta{margin-top:10px;font-size:.8rem;color:var(--gold);font-family:var(--font-display);font-weight:600;letter-spacing:.04em;word-break:break-all}
+.donate-cta-wrap{margin-top:36px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.tax-note{font-size:.8rem;color:rgba(255,255,255,.55);max-width:420px}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer{background:#08172c;color:rgba(255,255,255,.72);padding:70px 0 0}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px;padding-bottom:50px}
+.footer-brand .brand-text .b1{font-size:1.05rem}
+.footer-brand .brand-text .b2{color:var(--gold)}
+.footer-motto{margin:18px 0;font-family:var(--font-display);font-style:italic;font-size:.95rem;color:var(--gold);letter-spacing:.02em}
+.footer-brand p{font-size:.88rem;line-height:1.7}
+.footer h4{font-family:var(--font-display);font-weight:700;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:#fff;margin-bottom:20px}
+.footer-links{display:grid;gap:12px}
+.footer-links a{font-size:.92rem;transition:color .25s,transform .25s;display:inline-flex;align-items:center;gap:8px}
+.footer-links a:hover{color:var(--terracotta-light);transform:translateX(4px)}
+.footer-contact{display:grid;gap:12px;font-size:.9rem}
+.footer-contact li{display:flex;gap:10px;align-items:flex-start}
+.footer-contact .ico{color:var(--terracotta-light)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding:24px 0;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;font-size:.82rem}
+.footer-bottom .legal{display:flex;gap:22px}
+.footer-bottom a:hover{color:#fff}
+
+/* Scroll reveal */
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:1024px){
+  .hero-grid{grid-template-columns:1fr;gap:44px}
+  .impact-grid{grid-template-columns:repeat(2,1fr)}
+  .programs-grid{grid-template-columns:1fr;max-width:560px;margin:0 auto}
+  .tst-grid{grid-template-columns:1fr;max-width:560px;margin:0 auto}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .donate-grid{grid-template-columns:1fr;gap:40px}
+}
+@media (max-width:860px){
+  .nav-links{position:fixed;top:84px;left:0;right:0;background:var(--navy);flex-direction:column;align-items:flex-start;gap:4px;padding:14px 24px 26px;transform:translateY(-140%);transition:transform .38s var(--ease);box-shadow:0 24px 40px -20px rgba(0,0,0,.6);border-bottom:3px solid var(--terracotta)}
+  .nav-links.open{transform:translateY(0)}
+  .nav-links a{width:100%;padding:13px 6px;font-size:1.05rem;border-bottom:1px solid rgba(255,255,255,.07)}
+  .nav-links a::after{display:none}
+  .nav-cta .btn-donate{display:none}
+  .hamburger{display:flex}
+  .mission-grid{grid-template-columns:1fr;gap:48px}
+  .section{padding:76px 0}
+  .footer-grid{grid-template-columns:1fr;gap:36px}
+}
+@media (max-width:560px){
+  .stat-row{grid-template-columns:1fr;gap:14px}
+  .stat + .stat{border-left:none;border-top:1px solid rgba(255,255,255,.12);padding-top:12px}
+  .impact-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr;grid-auto-rows:220px}
+  .reg-badge{left:12px;right:12px;bottom:-34px}
+  .hero{padding:170px 0 100px}
+  .hero-actions .btn{width:100%}
+  .pay-card{flex-direction:column}
+  .team-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<!-- ============================================================
+     1. NAVBAR
+     ============================================================ -->
+<header class="navbar" id="navbar">
+  <div class="container nav-inner">
+    <a href="#top" class="brand" aria-label="Smyrna Gospel Church of Pakistan Trust home">
+      <!-- INSERT LOGO HERE: Red Celtic-style cross with white dove above, open book showing Alpha (A) and Omega (Ω), banner motto below -->
+      <span class="brand-logo"><img src="logo.png" alt="Smyrna Gospel Church of Pakistan Trust logo — red cross, dove, and open book" /></span>
+      <span class="brand-text">
+        <span class="b1">Smyrna Gospel Church</span>
+        <span class="b2">Pakistan Trust</span>
+      </span>
+    </a>
+
+    <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
+      <a href="#mission">Mission</a>
+      <a href="#impact">Impact</a>
+      <a href="#programs">Programs</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#team">Team</a>
+      <a href="#donate">Donate</a>
+    </nav>
+
+    <div class="nav-cta">
+      <a href="#donate" class="btn-donate">Donate</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============================================================
+     2. HERO
+     ============================================================ -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <span class="hero-tag">Humanitarian Relief • International</span>
+      <h1>Stand with those who <span class="accent">need us most.</span></h1>
+      <p class="hero-sub">
+        Every day, thousands of families face hunger, illness, displacement, and poverty without access
+        to the most basic support. Through your generosity, we deliver food, medical care, shelter, and
+        education to the most vulnerable — in Pakistan and beyond.
+      </p>
+      <div class="hero-actions">
+        <a href="#donate" class="btn btn-primary">Donate Now</a>
+        <a href="#mission" class="btn btn-outline">Learn More</a>
+      </div>
+      <p class="hero-note"><span class="dot"></span> 96% of every donation goes directly to field programs.</p>
+    </div>
+
+    <div class="stat-box reveal">
+      <div class="s-label">Our impact at a glance</div>
+      <div class="stat-row">
+        <div class="stat">
+          <div class="num" data-count="2.4" data-suffix="M+">0</div>
+          <div class="lbl">People Reached</div>
+        </div>
+        <div class="stat">
+          <div class="num" data-count="84" data-suffix="">0</div>
+          <div class="lbl">Countries Served</div>
+        </div>
+        <div class="stat">
+          <div class="num" data-count="96" data-suffix="%">0</div>
+          <div class="lbl">Funds to Programs</div>
+        </div>
+      </div>
+      <div class="s-foot"><span class="shield">🛡️</span> A registered non-profit with transparent, audited financials.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     3. TRUST BAR
+     ============================================================ -->
+<section class="trust-bar" aria-label="Partner organizations">
+  <div class="container trust-inner">
+    <span class="trust-label">Trusted &amp; partnering with</span>
+    <span class="trust-logo">UN&nbsp;OCHA</span>
+    <span class="trust-logo">ICRC</span>
+    <span class="trust-logo">Save&nbsp;the&nbsp;Children</span>
+    <span class="trust-logo">World&nbsp;Vision</span>
+    <span class="trust-logo">CARE&nbsp;International</span>
+  </div>
+</section>
+
+<!-- ============================================================
+     4. MISSION
+     ============================================================ -->
+<section class="section mission" id="mission">
+  <div class="container mission-grid">
+    <div class="mission-copy reveal">
+      <span class="eyebrow">Our Mission</span>
+      <h2 style="font-size:clamp(1.9rem,4vw,2.9rem);color:var(--navy);margin:16px 0 14px">Humanitarian aid when it matters most.</h2>
+      <p>
+        The <strong>Smyrna Gospel Church of Pakistan Trust</strong> exists to bring practical relief and lasting
+        hope to communities facing crisis. We respond to urgent needs — food shortages, medical emergencies,
+        loss of shelter, and barriers to education — with dignity, speed, and transparency.
+      </p>
+      <p>
+        Registered under <strong>Schedule-I, MoA under the Sindh Trust Rules, 2020</strong>, the Trust is
+        governed by a dedicated board and operates with full legal accountability, audited financial records,
+        and a firm commitment to seeing every donated rupee reach those who need it.
+      </p>
+      <ul class="check-list">
+        <li><span class="ck">✓</span><span><b>Rapid response</b><span>Emergency relief deployed within 72 hours of assessment.</span></span></li>
+        <li><span class="ck">✓</span><span><b>Full transparency</b><span>Public financials and end-to-end reporting on every project.</span></span></li>
+        <li><span class="ck">✓</span><span><b>Local reach</b><span>Community-rooted teams who know each region intimately.</span></span></li>
+      </ul>
+    </div>
+
+    <div class="mission-media reveal">
+      <!-- INSERT CHURCH EXTERIOR PHOTO HERE: photo of the church building exterior -->
+      <div class="main-img"><img src="church-exterior-1.png.jpeg" alt="Smyrna Gospel Church building exterior" /></div>
+      <div class="reg-badge">
+        <span class="icon">📜</span>
+        <div class="txt">
+          <b>Registered Charity</b>
+          <span>Schedule-I, MoA — Sindh Trust Rules, 2020</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     5. IMPACT
+     ============================================================ -->
+<section class="section impact" id="impact">
+  <div class="container">
+    <div class="section-head center light reveal">
+      <span class="eyebrow">Our Impact</span>
+      <h2>Real help, measured in real lives</h2>
+      <p>Numbers tell only part of the story — but they show how far your generosity travels.</p>
+    </div>
+    <div class="impact-grid">
+      <div class="impact-card reveal">
+        <div class="ico">🍲</div>
+        <div class="num"><span data-count="8.2">0</span>M+</div>
+        <div class="lbl">Meals Delivered</div>
+        <div class="sub">Hot meals and family food packs</div>
+      </div>
+      <div class="impact-card reveal">
+        <div class="ico">🏥</div>
+        <div class="num"><span data-count="1.6">0</span>M+</div>
+        <div class="lbl">Medical Treatments</div>
+        <div class="sub">Clinics, medicine, and care</div>
+      </div>
+      <div class="impact-card reveal">
+        <div class="ico">🏘️</div>
+        <div class="num" data-count="12400">0</div>
+        <div class="lbl">Shelters Built</div>
+        <div class="sub">Homes restored for displaced families</div>
+      </div>
+      <div class="impact-card reveal">
+        <div class="ico">🎓</div>
+        <div class="num" data-count="38500">0</div>
+        <div class="lbl">Children Educated</div>
+        <div class="sub">Schooling, books, and supplies</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     6. PROGRAMS
+     ============================================================ -->
+<section class="section programs" id="programs">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Our Programs</span>
+      <h2>Three pillars of relief</h2>
+      <p>Focused, accountable programs that turn donations into dignified, life-saving support.</p>
+    </div>
+    <div class="programs-grid">
+      <article class="program-card reveal">
+        <!-- INSERT CHURCH EXTERIOR / COMMUNITY PHOTO HERE: food distribution or community support image -->
+        <div class="program-media">
+          <img src="congregation.jpeg" alt="Food and nutrition relief — food packs for vulnerable families" />
+          <span class="program-tag">Program 01</span>
+        </div>
+        <div class="program-body">
+          <h3>Food &amp; Nutrition</h3>
+          <p>Emergency food packs, hot meals, and nutrition support for families facing hunger — ensuring no child or elderly person goes a day without food.</p>
+          <a href="#donate" class="program-link">Support this program <span>→</span></a>
+        </div>
+      </article>
+
+      <article class="program-card reveal">
+        <!-- INSERT FUNCTION/SPEAKER PHOTO HERE: Rev. Lal Shahab at podium — event imagery -->
+        <div class="program-media">
+          <img src="speaker.png.jpeg" alt="Medical response program — mobile clinics and medicines" />
+          <span class="program-tag">Program 02</span>
+        </div>
+        <div class="program-body">
+          <h3>Medical Response</h3>
+          <p>Mobile medical camps, essential medicines, and emergency treatment for communities with no access to healthcare.</p>
+          <a href="#donate" class="program-link">Support this program <span>→</span></a>
+        </div>
+      </article>
+
+      <article class="program-card reveal">
+        <!-- INSERT CHURCH SIGNBOARD PHOTO HERE: church signboard image -->
+        <div class="program-media">
+          <img src="signboard.jpeg" alt="Shelter and settlements program — homes for displaced families" />
+          <span class="program-tag">Program 03</span>
+        </div>
+        <div class="program-body">
+          <h3>Shelter &amp; Settlements</h3>
+          <p>Rebuilding homes and restoring safe living spaces for families displaced by disaster and conflict.</p>
+          <a href="#donate" class="program-link">Support this program <span>→</span></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     7. GALLERY
+     ============================================================ -->
+<section class="section gallery" id="gallery">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Gallery</span>
+      <h2>Moments that move us forward</h2>
+      <p>A glimpse into our community, our events, and the work made possible by your support.</p>
+    </div>
+    <div class="gallery-grid">
+      <!-- INSERT CHRISTMAS STAGE PHOTO HERE: Chairman on stage with Christmas banner -->
+      <figure class="g-item reveal">
+        <img src="christmas.png.jpeg" alt="Chairman speaking on stage during the church Christmas event" />
+        <figcaption class="g-cap"><span>Christmas Community Celebration</span></figcaption>
+      </figure>
+      <!-- INSERT CONGREGATION/EVENT PHOTO HERE: men sitting in pews / community gathering -->
+      <figure class="g-item reveal">
+        <img src="congregation.jpeg" alt="Church community gathering together" />
+        <figcaption class="g-cap"><span>Community Gathering</span></figcaption>
+      </figure>
+      <!-- INSERT CHURCH EXTERIOR PHOTO HERE: congregation in pews / worship service -->
+      <figure class="g-item reveal">
+        <img src="congregation-2.jpeg" alt="Congregation seated in the church pews" />
+        <figcaption class="g-cap"><span>Sunday Congregation</span></figcaption>
+      </figure>
+      <!-- INSERT HARMONIUM PHOTO HERE: musician playing the harmonium -->
+      <figure class="g-item reveal">
+        <img src="harmonium.png.jpeg" alt="Musician performing on the harmonium" />
+        <figcaption class="g-cap"><span>Harmonium Performance</span></figcaption>
+      </figure>
+      <!-- INSERT FUNCTION/SPEAKER PHOTO HERE: Rev. Lal Shahab speaking at the podium with God Gift Woman banner -->
+      <figure class="g-item reveal">
+        <img src="speaker.png.jpeg" alt="Rev. Lal Shahab speaking at the podium" />
+        <figcaption class="g-cap"><span>Guest Speaker Session</span></figcaption>
+      </figure>
+      <!-- INSERT CHURCH SIGNBOARD PHOTO HERE: church signboard -->
+      <figure class="g-item reveal">
+        <img src="signboard.jpeg" alt="Smyrna Gospel Church signboard" />
+        <figcaption class="g-cap"><span>Our Signboard</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     8. LEADERSHIP
+     ============================================================ -->
+<section class="section team" id="team">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Our Leadership</span>
+      <h2>The people behind the mission</h2>
+      <p>Faithful stewards who guide the Trust with integrity, wisdom, and compassion.</p>
+    </div>
+    <div class="team-grid">
+      <article class="team-card reveal">
+        <!-- INSERT CHAIRMAN PORTRAIT PHOTO HERE: Rev. Lal Shahab portrait (grey coat) -->
+        <div class="avatar"><img src="chairman.jpeg" alt="Portrait of Chairman Rev. Lal Shahab" /></div>
+        <span class="role">Chairman</span>
+        <h3>Rev. Lal Shahab</h3>
+        <div class="divider"></div>
+        <p class="bio">
+          Rev. Lal Shahab has devoted his life to serving the church and its community. Under his leadership,
+          the Trust has grown into a trusted channel for international humanitarian relief — grounded in faith
+          and guided by the motto, <em>"In thy light shall we see light."</em>
+        </p>
+      </article>
+
+      <article class="team-card reveal">
+        <!-- INSERT SECRETARY PORTRAIT PHOTO HERE: Pastor Brandan Julius portrait (blue coat) -->
+        <div class="avatar"><img src="secretary.jpeg" alt="Portrait of Joint Secretary Pastor Brandan Julius" /></div>
+        <span class="role">Joint Secretary</span>
+        <h3>Pastor Brandan Julius</h3>
+        <div class="divider"></div>
+        <p class="bio">
+          Pastor Brandan Julius brings organizational strength and pastoral heart to the Trust's daily work,
+          ensuring that every program is delivered responsibly and every family is cared for with compassion.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     9. TESTIMONIALS
+     ============================================================ -->
+<section class="section testimonials" id="testimonials">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Testimonials</span>
+      <h2>Stories of hope, from those we serve</h2>
+      <p>Words from partners and community members touched by your generosity.</p>
+    </div>
+    <div class="tst-grid">
+      <article class="tst-card reveal">
+        <div class="qmark">“</div>
+        <blockquote>
+          The food packs arrived exactly when our community needed them most. In the hardest season,
+          your support meant our children never went to bed hungry.
+        </blockquote>
+        <footer>
+          <span class="tst-ava">M</span>
+          <div><b>Mariam K.</b><span>Community Member</span></div>
+        </footer>
+      </article>
+
+      <article class="tst-card reveal">
+        <div class="qmark">“</div>
+        <blockquote>
+          Working alongside the Smyrna Trust has been a privilege. Their reporting is meticulous, their
+          teams are on the ground, and their care for people is genuine and consistent.
+        </blockquote>
+        <footer>
+          <span class="tst-ava">D</span>
+          <div><b>David R.</b><span>International Partner</span></div>
+        </footer>
+      </article>
+
+      <article class="tst-card reveal">
+        <div class="qmark">“</div>
+        <blockquote>
+          When our home was lost in the floods, they helped us rebuild. It wasn't just a house — it was
+          hope that someone stood with us and our family.
+        </blockquote>
+        <footer>
+          <span class="tst-ava">A</span>
+          <div><b>Ahmed S.</b><span>Relief Beneficiary</span></div>
+        </footer>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     10. DONATION
+     ============================================================ -->
+<section class="section donate" id="donate">
+  <div class="container donate-grid">
+    <div class="donate-intro reveal">
+      <span class="eyebrow">Give Today</span>
+      <h2 style="font-size:clamp(1.9rem,4vw,2.9rem);color:#fff;margin:16px 0 0">Your gift changes a life.</h2>
+      <p>
+        Donate securely from anywhere in the world. Choose the method that suits you best — every gift,
+        large or small, is directed to where it is needed most.
+      </p>
+      <ul class="donate-points">
+        <li><span class="p-ck">✓</span> Instant, secure, and worldwide</li>
+        <li><span class="p-ck">✓</span> Choose one-time or monthly giving</li>
+        <li><span class="p-ck">✓</span> Transparent receipts for your records</li>
+      </ul>
+      <span class="secure-badge">🔒 100% Secure Transactions</span>
+      <div class="donate-cta-wrap">
+        <a href="#" class="btn btn-primary" onclick="return false">Donate via Card</a>
+        <p class="tax-note">Gifts are processed through encrypted payment gateways. No sensitive card data is ever stored by us.</p>
+      </div>
+    </div>
+
+    <div class="pay-grid reveal">
+      <!-- Payment method: Stripe / Credit Card -->
+      <div class="pay-card">
+        <div class="pay-ico">💳</div>
+        <div>
+          <h4>Stripe — Credit / Debit Card</h4>
+          <p class="desc">Pay instantly by Visa, Mastercard, or American Express. The fastest and most convenient way to give from the US, UK, or Europe.</p>
+          <p class="meta">Powered by Stripe • PCI-DSS compliant</p>
+        </div>
+      </div>
+
+      <!-- Payment method: PayPal -->
+      <div class="pay-card">
+        <div class="pay-ico">🔵</div>
+        <div>
+          <h4>PayPal</h4>
+          <p class="desc">Donate securely with your PayPal balance or linked bank account. Ideal for one-time or recurring monthly gifts.</p>
+          <p class="meta">Send to: donations@smyrnatrust.org</p>
+        </div>
+      </div>
+
+      <!-- Payment method: Bank Wire (SWIFT) -->
+      <div class="pay-card">
+        <div class="pay-ico">🏦</div>
+        <div>
+          <h4>Bank Wire — SWIFT Transfer</h4>
+          <p class="desc">For larger gifts and institutional donors. Transfer directly to our account using the details below.</p>
+          <p class="meta">Beneficiary: Smyrna Gospel Church of Pakistan Trust<br />
+            Bank: State Bank of Pakistan — HBL Karachi<br />
+            Account No: 1234-5678-9012-3<br />
+            SWIFT/BIC: HBALPKKAXXX</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     11. FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#top" class="brand" aria-label="Back to top">
+          <!-- INSERT LOGO HERE: red Celtic-style cross with white dove, open book with Alpha & Omega -->
+          <span class="brand-logo"><img src="logo.png" alt="Smyrna Gospel Church of Pakistan Trust logo" /></span>
+          <span class="brand-text">
+            <span class="b1">Smyrna Gospel Church</span>
+            <span class="b2">Pakistan Trust</span>
+          </span>
+        </a>
+        <p class="footer-motto">"In thy light shall we see light."</p>
+        <p>
+          An internationally-focused humanitarian non-profit delivering food, medical aid, shelter, and
+          education to the vulnerable. Registered under Schedule-I, MoA under the Sindh Trust Rules, 2020.
+        </p>
+      </div>
+
+      <div>
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="#mission">Mission</a></li>
+          <li><a href="#impact">Impact</a></li>
+          <li><a href="#programs">Programs</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="#donate">Donate</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Contact</h4>
+        <ul class="footer-contact">
+          <li><span class="ico">📍</span><span>275/4-e, Jamshed Town, Karachi, Pakistan</span></li>
+          <li><span class="ico">✉️</span><span>info@smyrnatrust.org</span></li>
+          <li><span class="ico">📞</span><span>+92 21 3456 7890</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Smyrna Gospel Church of Pakistan Trust. All rights reserved.</span>
+      <div class="legal">
+        <a href="#">Contact</a>
+        <a href="#">Press</a>
+        <a href="#">Financials</a>
+        <a href="#">Privacy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   NAVBAR — scroll state + mobile hamburger menu
+   ============================================================ */
+const navbar = document.getElementById('navbar');
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 10);
+});
+
+hamburger.addEventListener('click', () => {
+  const open = navLinks.classList.toggle('open');
+  hamburger.classList.toggle('open', open);
+  hamburger.setAttribute('aria-expanded', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+});
+
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  });
+});
+
+/* ============================================================
+   SCROLL REVEAL — IntersectionObserver
+   ============================================================ */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* ============================================================
+   COUNT-UP ANIMATION — hero stats & impact numbers
+   ============================================================ */
+function animateCount(el) {
+  const target = parseFloat(el.dataset.count);
+  const suffix = el.dataset.suffix || '';
+  const decimals = target % 1 !== 0 ? 1 : 0;
+  const duration = 1600;
+  const start = performance.now();
+
+  function tick(now) {
+    const p = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - p, 3);
+    const val = (target * eased).toFixed(decimals);
+    el.textContent = Number(val).toLocaleString('en-US') + suffix;
+    if (p < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+const countIO = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      animateCount(e.target);
+      countIO.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('[data-count]').forEach(el => countIO.observe(el));
+
+/* ============================================================
+   FOOTER YEAR
+   ============================================================ */
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
