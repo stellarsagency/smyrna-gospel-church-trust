@@ -98,20 +98,33 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.15;letter-spacing:-.02
 .hamburger.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
 
 /* ============================================================
-   HERO
+   HERO — prayer split, 2 columns
    ============================================================ */
-.hero{position:relative;background:var(--navy);color:#fff;padding:190px 0 120px;overflow:hidden;text-align:center}
-.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(900px 500px at 82% 12%,rgba(200,69,44,.25),transparent 60%),radial-gradient(700px 420px at 8% 88%,rgba(217,164,65,.15),transparent 60%)}
-.hero::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px);background-size:30px 30px;opacity:.5}
-.hero-copy{position:relative;z-index:2;max-width:820px;margin:0 auto}
-.hero-tag{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);padding:9px 18px;border-radius:999px;font-family:var(--font-display);font-weight:600;font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:26px}
-.hero h1{font-size:clamp(2.5rem,5.4vw,4rem);margin-bottom:22px}
+.hero{position:relative;background:var(--navy);color:#fff;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(800px 500px at 16% 40%,rgba(217,164,65,.10),transparent 60%)}
+.hero::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px);background-size:30px 30px;opacity:.5;pointer-events:none}
+.hero-grid{position:relative;z-index:2;width:100%;display:grid;grid-template-columns:1.05fr .95fr;min-height:100vh;min-height:100dvh}
+.hero-content{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:170px clamp(2rem,5vw,4.5rem) 90px 5%;text-align:left}
+.hero-kick{font-family:var(--font-display);font-weight:600;font-size:.78rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:26px}
+.hero h1{font-family:var(--font-display);font-size:clamp(2.2rem,4.2vw,3.4rem);line-height:1.12;margin-bottom:28px;color:#fff}
 .hero h1 .accent{color:var(--terracotta-light)}
-.hero-sub{font-size:1.1rem;color:rgba(255,255,255,.78);max-width:620px;margin:0 auto 34px}
-.hero-actions{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin-bottom:26px}
-.hero-note{display:flex;align-items:center;justify-content:center;gap:10px;color:rgba(255,255,255,.6);font-size:.86rem}
-.hero-note .dot{width:8px;height:8px;border-radius:50%;background:#4ade80;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.hero-accent{width:96px;height:2px;background:var(--gold);border-radius:2px;margin-bottom:30px}
+.hero-sub{font-size:1.08rem;color:rgba(255,255,255,.82);max-width:520px;margin-bottom:36px}
+.hero-quote{font-style:italic;color:rgba(255,255,255,.78);max-width:520px;font-size:1.05rem;line-height:1.7;margin-bottom:16px}
+.hero-quote .verse{display:block;margin-top:12px;color:var(--gold);font-style:normal;font-size:.9rem;letter-spacing:.04em}
+.hero-actions{display:flex;flex-wrap:wrap;gap:16px;margin-top:6px}
+.hero-media{position:relative;min-height:100vh;min-height:100dvh;overflow:hidden}
+.hero-media img{position:absolute;top:0;right:0;width:100%;height:100%;object-fit:cover;object-position:right center;opacity:0;animation:heroFade 1.6s var(--ease) .3s forwards}
+.hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--navy) 0%,rgba(11,31,58,.18) 22%,rgba(11,31,58,0) 45%);pointer-events:none}
+@keyframes heroFade{from{opacity:0;transform:scale(1.03)}to{opacity:1;transform:scale(1)}}
+
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;grid-template-rows:auto auto;min-height:auto}
+  .hero-content{padding:150px 24px 64px;align-items:flex-start;text-align:left}
+  .hero-media{min-height:auto;order:2}
+  .hero-media img{position:relative;width:100%;height:auto;max-height:60vh;object-fit:cover;object-position:center 30%;opacity:0;animation:heroFade 1.6s var(--ease) .3s forwards}
+  .hero-media::after{background:linear-gradient(0deg,var(--navy) 0%,rgba(11,31,58,.10) 30%,rgba(11,31,58,0) 60%)}
+}
 
 /* ============================================================
    TRUST BAR
@@ -232,11 +245,16 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.15;letter-spacing:-.02
 .donate::before{content:"";position:absolute;inset:0;background:radial-gradient(800px 500px at 15% 8%,rgba(200,69,44,.2),transparent 60%),radial-gradient(600px 400px at 90% 100%,rgba(217,164,65,.14),transparent 60%)}
 .donate .container{position:relative;z-index:2}
 .donate-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
-.donate-intro .secure-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);padding:10px 18px;border-radius:999px;font-family:var(--font-display);font-weight:700;font-size:.82rem;color:#b9f0c8;margin-top:26px}
 .donate-intro p{color:rgba(255,255,255,.76);font-size:1.04rem;margin-top:16px}
+.impact-strip{display:inline-flex;align-items:center;gap:16px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:12px 22px;margin:26px 0 0}
+.impact-item{display:flex;align-items:baseline;gap:7px}
+.impact-item b{font-family:var(--font-display);font-size:1.5rem;font-weight:700;color:var(--gold);background:linear-gradient(90deg,var(--gold),var(--terracotta-light));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.impact-item span{font-family:var(--font-display);font-weight:600;font-size:.8rem;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.75)}
+.impact-arr{color:rgba(255,255,255,.4);font-size:1.1rem;font-weight:700}
 .donate-points{margin-top:24px;display:grid;gap:12px}
 .donate-points li{display:flex;gap:12px;align-items:center;color:rgba(255,255,255,.85);font-size:.94rem}
 .donate-points .p-ck{width:24px;height:24px;border-radius:50%;background:rgba(74,222,128,.16);color:#4ade80;display:flex;align-items:center;justify-content:center;font-size:.72rem;flex-shrink:0}
+.donate-intro .secure-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);padding:10px 18px;border-radius:999px;font-family:var(--font-display);font-weight:700;font-size:.82rem;color:#b9f0c8;margin-top:26px}
 .pay-grid{display:grid;gap:18px}
 .pay-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:var(--radius);padding:24px;display:flex;gap:18px;align-items:flex-start;transition:all .3s var(--ease)}
 .pay-card:hover{background:rgba(255,255,255,.11);transform:translateX(6px);border-color:rgba(217,164,65,.5)}
@@ -246,6 +264,84 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.15;letter-spacing:-.02
 .pay-card .meta{margin-top:10px;font-size:.8rem;color:var(--gold);font-family:var(--font-display);font-weight:600;letter-spacing:.03em;word-break:break-all}
 .donate-cta-wrap{margin-top:32px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
 .tax-note{font-size:.8rem;color:rgba(255,255,255,.55);max-width:420px}
+
+/* ============================================================
+   PRAYER SUPPORT — inline inside Donate intro
+   ============================================================ */
+.donate-pray{margin-top:30px;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.14);border-radius:var(--radius);padding:28px;position:relative;overflow:hidden}
+.donate-pray::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--gold),var(--terracotta-light))}
+.donate-pray-head{display:flex;gap:16px;align-items:flex-start;margin-bottom:16px}
+.dp-ic{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,rgba(217,164,65,.25),rgba(232,118,92,.2));border:1px solid rgba(217,164,65,.4);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0}
+.dp-title{flex:1}
+.dp-eyebrow{font-family:var(--font-display);font-weight:700;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+.donate-pray-head h3{color:#fff;font-size:1.3rem;margin-bottom:4px;font-weight:700}
+.donate-pray-head p{color:rgba(255,255,255,.7);font-size:.9rem;line-height:1.5}
+.pray-list{margin-bottom:20px;display:grid;gap:10px}
+.pray-list li{color:rgba(255,255,255,.82);font-size:.88rem}
+.pray-line{position:relative;padding-left:22px}
+.pray-line::before{content:"";position:absolute;left:0;top:8px;width:9px;height:9px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--terracotta-light));box-shadow:0 0 0 4px rgba(217,164,65,.12)}
+.pray-list li span{color:rgba(255,255,255,.78)}
+.pf{display:grid;gap:14px;margin-top:6px}
+.pf label{display:grid;gap:7px;font-family:var(--font-display);font-weight:700;font-size:.78rem;letter-spacing:.02em;color:rgba(255,255,255,.9)}
+.pf-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pf input,.pf textarea{width:100%;padding:13px 15px;border:1px solid rgba(255,255,255,.16);border-radius:11px;font-family:var(--font-body);font-size:.92rem;color:#fff;background:rgba(0,0,0,.28);transition:border-color .25s var(--ease),box-shadow .25s var(--ease)}
+.pf input::placeholder,.pf textarea::placeholder{color:rgba(255,255,255,.4)}
+.pf input:focus,.pf textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 4px rgba(217,164,65,.14)}
+.pf textarea{resize:vertical;min-height:84px}
+.pf-ok{display:none;margin-top:8px;background:rgba(74,222,128,.12);border:1px solid rgba(74,222,128,.5);color:#b9f0c8;padding:13px 15px;border-radius:12px;font-weight:600;font-size:.9rem;align-items:center;gap:10px;animation:fadeUp .4s var(--ease)}
+.pf-ok.on{display:flex}
+.pf-ok .ok-ic{width:22px;height:22px;border-radius:50%;background:rgba(74,222,128,.25);color:#4ade80;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:800;flex-shrink:0}
+
+/* ============================================================
+   DONATION WIDGET
+   ============================================================ */
+.dw{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.16);border-radius:var(--radius);padding:30px;backdrop-filter:blur(6px);position:relative;overflow:hidden}
+.dw::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 260px at 100% 0,rgba(217,164,65,.08),transparent 60%);pointer-events:none}
+.dw-step{position:relative;z-index:1}
+.dw-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px}
+.dw-title{display:flex;align-items:center;gap:12px}
+.dw-crown{font-family:var(--font-display);font-weight:700;font-size:.95rem;letter-spacing:.05em;color:#fff;background:linear-gradient(135deg,var(--gold),var(--terracotta-light));padding:10px 16px;border-radius:11px;box-shadow:0 8px 20px -8px rgba(217,164,65,.6)}
+.dw-head h3{font-size:1.35rem;color:#fff;font-weight:700}
+.dw-freq{display:flex;gap:4px;background:rgba(0,0,0,.22);border:1px solid rgba(255,255,255,.1);border-radius:999px;padding:4px}
+.dw-freq button{all:unset;cursor:pointer;padding:8px 15px;border-radius:999px;font-family:var(--font-display);font-weight:700;font-size:.82rem;color:rgba(255,255,255,.7);transition:all .25s var(--ease)}
+.dw-freq button.active{background:var(--terracotta);color:#fff;box-shadow:0 6px 16px -6px rgba(200,69,44,.7)}
+.dw-cur{display:flex;gap:6px;margin-bottom:18px}
+.dw-cur button{all:unset;cursor:pointer;flex:1;text-align:center;padding:11px 0;border-radius:10px;border:1px solid rgba(255,255,255,.12);font-family:var(--font-display);font-weight:700;font-size:.9rem;color:rgba(255,255,255,.7);transition:all .25s var(--ease)}
+.dw-cur button.active{background:rgba(217,164,65,.16);border-color:var(--gold);color:var(--gold)}
+.dw-amounts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+.dw-amounts button{all:unset;cursor:pointer;text-align:center;padding:16px 8px;border-radius:12px;border:1px solid rgba(255,255,255,.12);font-family:var(--font-display);font-weight:700;font-size:1.05rem;color:#fff;transition:all .25s var(--ease)}
+.dw-amounts button:hover{border-color:var(--gold)}
+.dw-amounts button.active{background:var(--gold);color:var(--navy);border-color:var(--gold);box-shadow:0 10px 24px -10px rgba(217,164,65,.7)}
+.dw-amounts button small{display:block;font-size:.68rem;font-weight:600;color:rgba(255,255,255,.55);margin-top:2px}
+.dw-custom-btn{width:100%;margin-top:14px;padding:16px 18px;border-radius:12px;border:1px dashed rgba(255,255,255,.25);background:rgba(0,0,0,.18);color:rgba(255,255,255,.72);font-family:var(--font-display);font-weight:600;font-size:.95rem;letter-spacing:.02em;cursor:pointer;transition:all .25s var(--ease)}
+.dw-custom-btn:hover{border-color:var(--gold);color:#fff}
+.dw-custom-btn.picked{border-color:var(--gold);color:var(--gold)}
+.dw-input{width:100%;margin-top:14px;padding:16px 18px;border-radius:12px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.22);color:#fff;font-family:var(--font-display);font-weight:700;font-size:1.05rem;letter-spacing:.02em}
+.dw-input:focus{outline:none;border-color:var(--gold)}
+.dw-tabs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0}
+.dw-tab{all:unset;cursor:pointer;display:flex;align-items:center;gap:10px;justify-content:center;padding:13px 8px;border-radius:12px;border:1px solid rgba(255,255,255,.12);font-family:var(--font-display);font-weight:700;font-size:.86rem;color:rgba(255,255,255,.8);transition:all .25s var(--ease)}
+.dw-tab:hover{border-color:var(--gold)}
+.dw-tab.active{background:rgba(217,164,65,.16);border-color:var(--gold);color:var(--gold)}
+.dw-tab .ti{font-size:1.2rem}
+.dw-pane{display:none;opacity:0;animation:fadeIn .4s var(--ease) forwards}
+.dw-pane.active{display:block}
+.dw-pane .dw-field{font-size:.82rem;color:rgba(255,255,255,.6);margin:16px 0 8px;font-family:var(--font-display);font-weight:600;letter-spacing:.05em;text-transform:uppercase}
+.dw-info{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:16px}
+.dw-info [data-label]{display:flex;justify-content:space-between;gap:14px;align-items:center;padding:8px 0;font-size:.88rem}
+.dw-info [data-label]:not(:last-child){border-bottom:1px solid rgba(255,255,255,.07)}
+.dw-info b{color:#fff;font-family:var(--font-display)}
+.dw-info .v{color:var(--gold);font-family:var(--font-display);font-weight:700;text-align:right;word-break:break-all}
+.dw-copy{all:unset;cursor:pointer;color:#e8765c;font-family:var(--font-display);font-weight:700;font-size:.8rem;flex-shrink:0;border:1px solid rgba(232,118,92,.4);padding:4px 10px;border-radius:8px;transition:all .2s}
+.dw-copy:hover{background:rgba(232,118,92,.12)}
+.dw-copy.copied{color:#4ade80;border-color:#4ade80}
+.dw-paybtn{width:100%;margin-top:20px}
+.dw-paybtn.loading .dw-paybtn-label{opacity:0}
+.dw-paybtn .spinner{display:none;position:absolute;width:20px;height:20px;border:3px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite}
+.dw-paybtn.loading .spinner{display:block}
+.dw-refer{width:100%;margin-top:12px;display:none;background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.4);color:#b9f0c8;border-radius:12px;padding:13px 16px;font-size:.9rem;align-items:center;gap:12px;animation:fadeUp .4s var(--ease)}
+.dw-refer.on{display:flex}
+.dw-refer .ico{font-size:1.4rem}
+@keyframes spin{to{transform:rotate(360deg)}}
 
 /* ============================================================
    DOCUMENT
@@ -349,6 +445,14 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.15;letter-spacing:-.02
   .avatar{width:110px;height:110px;margin-bottom:16px}
   .tst-card{padding:28px 22px}
   .pay-card{flex-direction:column;padding:22px}
+  .impact-strip{flex-wrap:wrap;gap:10px 14px;border-radius:18px;padding:14px 18px}
+  .dw{width:100%;max-width:560px;margin:0 auto;padding:22px}
+  .pf-row{grid-template-columns:1fr}
+  .dw-head{flex-direction:column;align-items:flex-start}
+  .dw-amounts{grid-template-columns:repeat(2,1fr)}
+  .dw-tabs{grid-template-columns:1fr}
+  .dw-info [data-label]{flex-wrap:wrap}
+  .dw-info b{flex-basis:100%}
   .footer{padding-top:54px}
   .footer-bottom{flex-direction:column;text-align:center;justify-content:center}
   .doc-scroll{max-height:340px}
@@ -398,24 +502,34 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.15;letter-spacing:-.02
 <main id="top">
 
 <!-- ============================================================
-     2. HERO
+     2. HERO — prayer split
      ============================================================ -->
 <section class="hero">
-  <div class="container">
-    <div class="hero-copy">
-      <span class="hero-tag">Registered Charity • Reg. KAR/EAST/131/2026</span>
-      <h1>Give hope, food &amp; shelter to <span class="accent">orphans who need us most.</span></h1>
+  <div class="hero-grid">
+
+    <div class="hero-content">
+      <span class="hero-kick">Why We Started &middot; Community Support &amp; Outreach</span>
+      <h1>A Community in Faith, <span class="accent">Growing Together</span></h1>
+      <div class="hero-accent" aria-hidden="true"></div>
       <p class="hero-sub">
-        Every day, orphaned and displaced children in Gaza, Pakistan, and beyond face hunger, illness, and
-        homelessness. Your donation delivers warm meals, medical care, shelter, and education — bringing real
-        hope to the most vulnerable.
+        We began with a simple conviction — to stand with the suffering and persecuted among us. Through
+        community support and outreach, we feed the hungry, shelter the displaced, and care for orphans in
+        Gaza and Pakistan.
+      </p>
+      <p class="hero-quote">
+        &ldquo;If the world hates you, know that it has hated me before it hated you.&rdquo;
+        <span class="verse">&mdash; John 15:18</span>
       </p>
       <div class="hero-actions">
-        <a href="#donate" class="btn btn-primary">Donate Now</a>
-        <a href="#about" class="btn btn-outline">Learn More</a>
+        <a href="#about" class="btn btn-primary">Our Story</a>
+        <a href="#donate" class="btn btn-outline">Support the Outreach</a>
       </div>
-      <p class="hero-note"><span class="dot"></span> Every gift counts — give once or monthly. Reg. KAR/EAST/131/2026.</p>
     </div>
+
+    <div class="hero-media">
+      <img src="Prayer.png" alt="A boy with both hands together in prayer" loading="eager" fetchpriority="high" />
+    </div>
+
   </div>
 </section>
 
@@ -434,19 +548,19 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.15;letter-spacing:-.02
 </section>
 
 <!-- ============================================================
-     4. SUPPORT OUR VISION
+     4. OUR FIRST GOAL
      ============================================================ -->
 <section class="section cause" id="vision">
   <div class="container">
     <div class="section-head center reveal">
-      <span class="eyebrow">Support Our Vision</span>
+      <span class="eyebrow">Our First Goal</span>
       <h2>Feed the hungry. Heal the sick. Shelter the displaced. Educate the next generation.</h2>
       <p>Your support makes these four causes real — choose where your gift goes or give to the greatest need.</p>
     </div>
     <div class="cause-grid">
       <article class="cause-card reveal">
         <div class="cause-media">
-          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80&auto=format&fit=crop" alt="Nutritious food ready to serve — food and nutrition support" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&q=80&auto=format&fit=crop" alt="Giving food to a hungry child" loading="lazy" />
         </div>
         <div class="cause-body">
           <h3>🍲 Feed the Hungry</h3>
@@ -456,7 +570,7 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.15;letter-spacing:-.02
 
       <article class="cause-card reveal">
         <div class="cause-media">
-          <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80&auto=format&fit=crop" alt="Medical care and treatment for the sick and injured" loading="lazy" />
+          <img src="Sick.jpg" alt="Holding the hand of a patient" loading="lazy" />
         </div>
         <div class="cause-body">
           <h3>🏥 Heal the Sick</h3>
@@ -466,7 +580,7 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.15;letter-spacing:-.02
 
       <article class="cause-card reveal">
         <div class="cause-media">
-          <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80&auto=format&fit=crop" alt="Safe homes and shelter for displaced families" loading="lazy" />
+          <img src="Shelter House.jpg" alt="A modest home for displaced families" loading="lazy" />
         </div>
         <div class="cause-body">
           <h3>🏠 Shelter the Displaced</h3>
@@ -476,7 +590,7 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.15;letter-spacing:-.02
 
       <article class="cause-card reveal">
         <div class="cause-media">
-          <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80&auto=format&fit=crop" alt="Children learning — education support for orphans" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&q=80&auto=format&fit=crop" alt="A student studying with books in a classroom" loading="lazy" />
         </div>
         <div class="cause-body">
           <h3>🎓 Educate Children</h3>
@@ -526,7 +640,7 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.15;letter-spacing:-.02
 </section>
 
 <!-- ============================================================
-     6. PROGRAMS
+     7. PROGRAMS
      ============================================================ -->
 <section class="section programs" id="programs">
   <div class="container">
@@ -579,7 +693,7 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.15;letter-spacing:-.02
 </section>
 
 <!-- ============================================================
-     7. GALLERY
+     8. GALLERY
      ============================================================ -->
 <section class="section gallery" id="gallery">
   <div class="container">
@@ -590,24 +704,12 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.15;letter-spacing:-.02
     </div>
     <div class="gallery-grid">
       <figure class="g-item reveal">
-        <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?w=800&q=80&auto=format&fit=crop" alt="Volunteers supporting the community" loading="lazy" />
-        <figcaption class="g-cap"><span>Community Volunteers</span></figcaption>
-      </figure>
-      <figure class="g-item reveal">
-        <img src="christmas.png.jpeg" alt="Christmas community celebration" loading="lazy" />
-        <figcaption class="g-cap"><span>Christmas Celebration</span></figcaption>
-      </figure>
-      <figure class="g-item reveal">
-        <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?w=800&q=80&auto=format&fit=crop" alt="Relief food support for families in need" loading="lazy" />
-        <figcaption class="g-cap"><span>Food Relief</span></figcaption>
-      </figure>
-      <figure class="g-item reveal">
         <img src="congregation.jpeg" alt="Church community gathering together" loading="lazy" />
         <figcaption class="g-cap"><span>Community Gathering</span></figcaption>
       </figure>
       <figure class="g-item reveal">
-        <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=800&q=80&auto=format&fit=crop" alt="Helping hands coming together to support one another" loading="lazy" />
-        <figcaption class="g-cap"><span>Helping Hands</span></figcaption>
+        <img src="Community.png" alt="Community support and outreach" loading="lazy" />
+        <figcaption class="g-cap"><span>Community Support</span></figcaption>
       </figure>
       <figure class="g-item reveal">
         <img src="congregation-2.jpeg" alt="Congregation seated in the church pews" loading="lazy" />
@@ -618,7 +720,7 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.15;letter-spacing:-.02
 </section>
 
 <!-- ============================================================
-     8. LEADERSHIP
+     9. LEADERSHIP
      ============================================================ -->
 <section class="section team" id="leadership">
   <div class="container">
@@ -654,7 +756,7 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.15;letter-spacing:-.02
 </section>
 
 <!-- ============================================================
-     9. TESTIMONIALS
+     10. TESTIMONIALS
      ============================================================ -->
 <section class="section testimonials" id="testimonials">
   <div class="container">
@@ -704,7 +806,7 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.15;letter-spacing:-.02
 </section>
 
 <!-- ============================================================
-     10. DONATION
+     11. DONATION
      ============================================================ -->
 <section class="section donate" id="donate">
   <div class="container donate-grid">
@@ -712,66 +814,138 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.15;letter-spacing:-.02
       <span class="eyebrow">Give Today</span>
       <h2 style="font-size:clamp(1.9rem,4vw,2.9rem);color:#fff;margin:16px 0 0">Your gift changes a life.</h2>
       <p>
-        Donate securely from anywhere in the world. Choose the method that suits you best — every gift, large
-        or small, is directed to where it is needed most.
+        Donate securely from anywhere in the world. Choose online payment for international donors or direct
+        bank transfer for our national family — every gift, large or small, is directed to where it is needed most.
       </p>
+
+      <div class="impact-strip">
+        <div class="impact-item"><b>1</b><span>Donation</span></div>
+        <span class="impact-arr">=</span>
+        <div class="impact-item"><b>1</b><span>Gift Delivered</span></div>
+        <span class="impact-arr">=</span>
+        <div class="impact-item"><b>1</b><span>Good Deed</span></div>
+      </div>
+
       <ul class="donate-points">
-        <li><span class="p-ck">✓</span> Instant, secure, and worldwide</li>
+        <li><span class="p-ck">✓</span> International: Visa, Mastercard, PayPal, Stripe</li>
+        <li><span class="p-ck">✓</span> Pakistan: JazzCash / EasyPaisa / Bank transfer</li>
         <li><span class="p-ck">✓</span> Choose one-time or monthly giving</li>
         <li><span class="p-ck">✓</span> Transparent receipts for your records</li>
       </ul>
       <span class="secure-badge">🔒 100% Secure Transactions</span>
-      <div class="donate-cta-wrap">
-        <a href="#" class="btn btn-primary" onclick="return false">Donate via Card</a>
-        <p class="tax-note">Gifts are processed through encrypted payment gateways. No sensitive card data is ever stored by us.</p>
+
+      <div class="donate-pray">
+        <div class="donate-pray-head">
+          <span class="dp-ic">🙏</span>
+          <div>
+            <h3>Get Prayer by Donating</h3>
+            <p>Your gift supports the suffering, and connects you to a community that prays with you.</p>
+          </div>
+        </div>
+        <ul class="pray-list">
+          <li class="pray-line"><span>Send us a confidential prayer request with your gift.</span></li>
+          <li class="pray-line"><span>Our intercessors lift it before the Lord for 30 days.</span></li>
+          <li class="pray-line"><span>Join us in giving — every gift prays with those in need.</span></li>
+        </ul>
+        <form class="pf" id="prayerForm" novalidate>
+          <div class="pf-row">
+            <label>Full Name <input type="text" name="name" placeholder="Your name" required /></label>
+            <label>Contact <input type="tel" name="phone" placeholder="Phone / WhatsApp" /></label>
+          </div>
+          <label>Prayer Request <textarea name="request" placeholder="Share what you would like us to pray for…" required></textarea></label>
+          <button type="submit" class="btn btn-primary" style="margin-top:6px;background:var(--gold);color:var(--navy)">Add Prayer Request</button>
+          <div class="pf-ok" id="prayerOk"><span class="ok-ic">✓</span><span>Thank you! Your prayer request has been received. We'll be praying for you.</span></div>
+        </form>
       </div>
     </div>
 
-    <div class="pay-grid reveal">
-      <div class="pay-card">
-        <div class="pay-ico">💳</div>
-        <div>
-          <h4>Stripe — Credit / Debit Card</h4>
-          <p class="desc">Pay instantly by Visa, Mastercard, or American Express. The fastest and most convenient way to give from the US, UK, or Europe.</p>
-          <p class="meta">Powered by Stripe • PCI-DSS compliant</p>
+    <!-- DONATION WIDGET -->
+    <div class="dw reveal">
+      <form id="dwForm" class="dw-step" novalidate>
+        <div class="dw-head">
+          <div class="dw-title">
+            <span class="dw-crown">Give</span>
+            <h3>Make a Donation</h3>
+          </div>
+          <div class="dw-freq" role="tablist" aria-label="Giving frequency">
+            <button type="button" class="active" data-freq="once">One-time</button>
+            <button type="button" data-freq="monthly">Monthly</button>
+          </div>
         </div>
-      </div>
 
-      <div class="pay-card">
-        <div class="pay-ico">🔵</div>
-        <div>
-          <h4>PayPal</h4>
-          <p class="desc">Donate securely with your PayPal balance or linked bank account. Ideal for one-time or recurring monthly gifts.</p>
-          <p class="meta">Send to: smyrnagospel99@gmail.com</p>
+        <div class="dw-cur" role="tablist" aria-label="Currency">
+          <button type="button" class="active" data-cur="PKR">🇵🇰 PKR</button>
+          <button type="button" data-cur="USD">🇺🇸 USD (Intl)</button>
         </div>
-      </div>
 
-      <div class="pay-card">
-        <div class="pay-ico">📱</div>
-        <div>
-          <h4>JazzCash / EasyPaisa / Bank Account</h4>
-          <p class="desc">Direct giving within Pakistan. For our national donor family, donate directly to our account.</p>
-          <p class="meta">Account: Smyrna Gospel Church of Pakistan Trust<br />MB: 0349 1824801</p>
-        </div>
-      </div>
+        <div class="dw-amounts" data-amounts></div>
+        <button type="button" class="dw-custom-btn" id="dwCustom" data-custom>Enter a custom amount</button>
 
-      <div class="pay-card">
-        <div class="pay-ico">🏦</div>
-        <div>
-          <h4>Bank Wire — SWIFT Transfer</h4>
-          <p class="desc">For larger gifts and institutional donors. Transfer directly to our account using the details below.</p>
-          <p class="meta">Beneficiary: Smyrna Gospel Church of Pakistan Trust<br />
-            Bank: HBL Karachi<br />
-            Account No: 1234-5678-9012-3<br />
-            SWIFT/BIC: HBALPKKAXXX</p>
+        <div class="dw-tabs" role="tablist" aria-label="Payment method">
+          <button type="button" class="dw-tab active" data-tab="card"><span class="ti">💳</span>Card / Stripe</button>
+          <button type="button" class="dw-tab" data-tab="paypal"><span class="ti">🅿️</span>PayPal</button>
+          <button type="button" class="dw-tab" data-tab="jazzcash"><span class="ti">📱</span>JazzCash</button>
+          <button type="button" class="dw-tab" data-tab="bank"><span class="ti">🏦</span>Bank Transfer</button>
         </div>
-      </div>
+
+        <!-- STRIPE -->
+        <div class="dw-pane active" data-pane="card">
+          <p class="dw-field">Pay by Debit / Credit Card</p>
+          <div class="dw-info">
+            <div data-label><b>Where</b><span class="v">Powered by Stripe Checkout</span></div>
+            <div data-label><b>Accepted</b><span class="v">Visa · Mastercard · AMEX</span></div>
+            <div data-label><b>Delegate</b><span class="v">USD &amp; major currencies</span></div>
+          </div>
+          <button type="submit" class="btn btn-primary dw-paybtn"><span class="spinner"></span><span class="dw-paybtn-label">Pay <span data-pay-amount></span> with Card</span></button>
+          <div class="dw-refer" id="cardRefer"><span class="ico">✅</span><span>You'll be taken to a secure Stripe Checkout page to complete your card payment.</span></div>
+        </div>
+
+        <!-- PAYPAL -->
+        <div class="dw-pane" data-pane="paypal">
+          <p class="dw-field">Donate with PayPal</p>
+          <div class="dw-info">
+            <div data-label><span>Send to</span><span class="v">smyrnagospel99@gmail.com</span></div>
+            <div data-label><span>Suitable for</span><span class="v">International donors</span></div>
+          </div>
+          <button type="submit" class="btn btn-primary dw-paybtn"><span class="spinner"></span><span class="dw-paybtn-label">Pay <span data-pay-amount></span> with PayPal</span></button>
+          <button type="button" class="btn btn-outline" id="ppMe" style="width:100%;margin-top:10px">Pay via PayPal.me</button>
+          <div class="dw-refer" id="ppRefer"><span class="ico">✅</span><span>Opening PayPal in a new tab to complete your donation.</span></div>
+        </div>
+
+        <!-- JAZZCASH -->
+        <div class="dw-pane" data-pane="jazzcash">
+          <p class="dw-field">Send directly in Pakistan</p>
+          <div class="dw-info">
+            <div data-label><span>JazzCash / EasyPaisa</span><b data-copy="0349 1824801">0349 1824801 <button type="button" class="dw-copy">Copy</button></b></div>
+            <div data-label><span>Account Holder</span><span class="v">Smyrna Gospel Church</span></div>
+            <div data-label><span>Recommended</span><span class="v">Private donors in PK</span></div>
+          </div>
+          <button type="submit" class="btn btn-primary dw-paybtn"><span class="spinner"></span><span class="dw-paybtn-label">Confirm Gift of <span data-pay-amount></span></span></button>
+          <div class="dw-refer" id="jcRefer"><span class="ico">💬</span><span>Please send a WhatsApp confirmation (0349 1824801) with your name &amp; amount for a receipt.</span></div>
+        </div>
+
+        <!-- BANK TRANSFER -->
+        <div class="dw-pane" data-pane="bank">
+          <p class="dw-field">Direct Bank Transfer — International &amp; Local</p>
+          <div class="dw-info">
+            <div data-label><span>Beneficiary</span><b>Smyrna Gospel Church of Pakistan Trust</b></div>
+            <div data-label><span>Bank</span><b data-copy="HBL Karachi">HBL Karachi <button type="button" class="dw-copy">Copy</button></b></div>
+            <div data-label><span>Account No (PKR)</span><b data-copy="1234-5678-9012-3">1234-5678-9012-3 <button type="button" class="dw-copy">Copy</button></b></div>
+            <div data-label><span>SWIFT / BIC</span><b data-copy="HBALPKKAXXX">HBALPKKAXXX <button type="button" class="dw-copy">Copy</button></b></div>
+            <div data-label><span>IBAN</span><b data-copy="PK12HBAL0123456789012345">PK12HBAL…2345 <button type="button" class="dw-copy">Copy</button></b></div>
+            <div data-label><span>Note</span><span class="v">Add ref: "DONATION + your name"</span></div>
+          </div>
+          <button type="submit" class="btn btn-primary dw-paybtn"><span class="spinner"></span><span class="dw-paybtn-label">I've Transferred Program <span data-pay-amount></span></span></button>
+          <div class="dw-refer" id="bankRefer"><span class="ico">🧾</span><span>Confirmation sent. Our team will email your receipt within 24–48 hours.</span></div>
+        </div>
+
+      </form>
     </div>
   </div>
 </section>
 
 <!-- ============================================================
-     11. DOCUMENT
+     12. DOCUMENT
      ============================================================ -->
 <section class="section document" id="document">
   <div class="container">
@@ -803,7 +977,7 @@ h1,h2,h3,h4{font-family:var(--font-display);line-height:1.15;letter-spacing:-.02
 </div>
 
 <!-- ============================================================
-     12. FOOTER
+     13. FOOTER
      ============================================================ -->
 <footer class="footer">
   <div class="container">
@@ -908,6 +1082,163 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
 /* Footer year */
 document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ============================================================
+   DONATION WIDGET
+   ============================================================ */
+(function(){
+  const form = document.getElementById('dwForm');
+  if (!form) return;
+
+  const PRESETS = { PKR:[1000,5000,10000,25000,50000,100000], USD:[10,25,50,100,250,500] };
+
+  let cur = 'PKR';
+  let freq = 'once';
+  let amount = PRESETS.PKR[1];
+
+  const stateEls = {
+    amounts: form.querySelector('[data-amounts]'),
+    customBtn: form.querySelector('[data-custom]'),
+    payLabels: form.querySelectorAll('[data-pay-amount]'),
+    freqBtns: form.querySelectorAll('[data-freq]'),
+    curBtns: form.querySelectorAll('[data-cur]'),
+    tabs: form.querySelectorAll('.dw-tab'),
+    panes: form.querySelectorAll('.dw-pane'),
+    payBtns: form.querySelectorAll('.dw-paybtn'),
+    refer: form.querySelectorAll('.dw-refer')
+  };
+
+  function fmt(n){
+    return cur === 'USD'
+      ? '$' + new Intl.NumberFormat('en-US').format(n)
+      : 'Rs ' + new Intl.NumberFormat('en-PK').format(n);
+  }
+  function renderAmounts(){
+    stateEls.amounts.innerHTML = '';
+    PRESETS[cur].forEach(v => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.textContent = fmt(v);
+      b.dataset.amt = v;
+      if (v === amount) b.classList.add('active');
+      b.addEventListener('click', () => {
+        amount = v;
+        stateEls.customBtn.classList.remove('picked');
+        stateEls.customBtn.textContent = 'Enter a custom amount…';
+        syncAmounts();
+      });
+      stateEls.amounts.appendChild(b);
+    });
+    syncAmounts();
+  }
+  function syncAmounts(){
+    stateEls.amounts.querySelectorAll('button').forEach(b => b.classList.toggle('active', Number(b.dataset.amount) === amount));
+    stateEls.payLabels.forEach(el => el.textContent = fmt(amount) + (freq === 'monthly' ? ' /mo' : ''));
+  }
+
+  // Currency switch
+  stateEls.curBtns.forEach(b => b.addEventListener('click', () => {
+    stateEls.curBtns.forEach(x => x.classList.toggle('active', x === b));
+    cur = b.dataset.cur;
+    amount = PRESETS[cur][1];
+    stateEls.customBtn.classList.remove('picked');
+    stateEls.customBtn.textContent = 'Enter a custom amount…';
+    renderAmounts();
+  }));
+
+  // Frequency
+  stateEls.freqBtns.forEach(b => b.addEventListener('click', () => {
+    stateEls.freqBtns.forEach(x => x.classList.toggle('active', x === b));
+    freq = b.dataset.freq;
+    syncAmounts();
+  }));
+
+  // Custom amount
+  stateEls.customBtn.addEventListener('click', () => {
+    stateEls.customBtn.classList.add('picked');
+    stateEls.amounts.querySelectorAll('button').forEach(x => x.classList.remove('active'));
+    stateEls.customBtn.textContent = '';
+    const inp = document.createElement('input');
+    inp.type = 'number';
+    inp.min = '1';
+    inp.placeholder = cur === 'PKR' ? 'Enter PKR amount' : 'Enter USD amount';
+    inp.className = 'dw-input';
+    inp.style.marginTop = '0';
+    stateEls.customBtn.replaceWith(inp);
+    inp.focus();
+    inp.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter'){ e.preventDefault(); amount = +inp.value || 0; syncAmounts(); inp.blur(); }
+    });
+    inp.addEventListener('blur', () => {
+      amount = +inp.value || 0;
+      syncAmounts();
+    });
+  });
+
+  // Tabs
+  stateEls.tabs.forEach(t => t.addEventListener('click', () => {
+    stateEls.tabs.forEach(x => x.classList.toggle('active', x === t));
+    stateEls.panes.forEach(p => p.classList.toggle('active', p.dataset.pane === t.dataset.tab));
+  }));
+
+  // Copy buttons
+  form.querySelectorAll('.dw-copy').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault(); e.stopPropagation();
+      const row = btn.closest('[data-copy]');
+      const text = row ? row.dataset.copy : '';
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 1600);
+      });
+    });
+  });
+
+  // PayPal.me button
+  const ppMe = document.getElementById('ppMe');
+  if (ppMe) ppMe.addEventListener('click', () => {
+    const amt = cur === 'USD' ? amount : Math.round(amount / 280);
+    window.open('https://www.paypal.me/smyrnagospel/' + amt, '_blank', 'noopener');
+  });
+
+  // Submit
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const activePane = form.querySelector('.dw-pane.active');
+    const refer = activePane.querySelector('.dw-refer');
+    form.querySelector('.dw-paybtn').classList.add('loading');
+    const AMT = fmt(amount) + (freq === 'monthly' ? ' / month' : '');
+
+    setTimeout(() => {
+      form.querySelectorAll('.dw-paybtn').forEach(b => b.classList.remove('loading'));
+      refer.classList.add('on');
+      setTimeout(() => refer.classList.remove('on'), 6000);
+    }, 900);
+  });
+
+  renderAmounts();
+})();
+
+/* ============================================================
+   PRAYER REQUEST FORM
+   ============================================================ */
+(function(){
+  const pf = document.getElementById('prayerForm');
+  if (!pf) return;
+  pf.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const ok = document.getElementById('prayerOk');
+    const btn = pf.querySelector('button[type="submit"]');
+    btn.innerHTML = 'Sending…';
+    setTimeout(() => {
+      btn.innerHTML = 'Donate &amp; Request Prayer 🙏';
+      ok.classList.add('on');
+      pf.reset();
+      setTimeout(() => ok.classList.remove('on'), 7000);
+    }, 900);
+  });
+})();
 </script>
 
 </body>
